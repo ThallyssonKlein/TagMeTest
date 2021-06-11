@@ -1,23 +1,20 @@
 import { screen, fireEvent } from "@testing-library/react";
 import { getPage } from 'next-page-tester';
-import Login from './index';
-import ListOrders from '../listOrders';
 import { act } from 'react-dom/test-utils';
 
 describe("Testing the login", _ => {
-    // test("should items be present in the document", async _ => {
-    //     const { render } = await getPage({
-    //         route: '/login',
-    //     });
-    //     render();      
+    it("should items be present in the document", async _ => {
+        const { render } = await getPage({
+            route: '/login'
+        });
+        render();      
 
-    //     expect(screen.getByPlaceholderText("Nome do usuário")).toBeInTheDocument();
-    //     expect(screen.getByPlaceholderText("Senha")).toBeInTheDocument();
-    //     expect(screen.getByText("Acessar")).toBeInTheDocument();
-    // }, 10000);
+        expect(screen.getByPlaceholderText("Nome do usuário")).toBeInTheDocument();
+        expect(screen.getByPlaceholderText("Senha")).toBeInTheDocument();
+        expect(screen.getByText("Acessar")).toBeInTheDocument();
+    });
 
     it("should login with correct credentials", async _ => {
-        // render(<Login/>);
         const { render } = await getPage({
             route : '/login'
         });
@@ -29,13 +26,15 @@ describe("Testing the login", _ => {
             fireEvent.change(input1, { target: { value: 'test' } });
             fireEvent.change(input2, { target: { value: 'test' } });
             fireEvent.click(button);
+            console.log("Passou pelos eventos");
         });
 
-        expect(screen.getByText("App")).toBeInTheDocument();
+        setTimeout(_ => {
+            expect(screen.getByText("App")).toBeInTheDocument();
+        }, 2000);
     });
 
     it("should not login with wrong credentials", async _ => {
-        // render(<Login/>);
         const { render } = await getPage({
             route : '/login'
         });
@@ -46,9 +45,11 @@ describe("Testing the login", _ => {
         await act(async _ => {
             fireEvent.change(input1, { target: { value: 'test' } });
             fireEvent.change(input2, { target: { value: 'test' } });
-            fireEvent.click(button);
+            fireEvent.click(button); 
         });
 
-        expect(screen.getByText("App")).not.toBeInTheDocument();
+        setTimeout(_ => {
+            expect(screen.getByText("App")).not.toBeInTheDocument();
+        }, 2000);
     });
 });
