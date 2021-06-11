@@ -17,7 +17,7 @@ export default function App(){
 		})();
 	}, []);
 
-    return <div>App</div>
+    return <div>{orders}</div>
 }
 
 export async function getServerSideProps(ctx) {

@@ -1,11 +1,11 @@
 FROM node:14.16.1-alpine3.13
 
-RUN mkdir /src
-WORKDIR /src
+RUN mkdir /app
+WORKDIR /app
 
-COPY . /src
-RUN yarn
+COPY . /app
+RUN cd frontend/ && yarn
 
 EXPOSE 3000
 
-CMD yarn dev
+CMD cd frontend/ && yarn dev
