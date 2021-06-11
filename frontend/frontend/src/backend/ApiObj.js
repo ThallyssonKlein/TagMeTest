@@ -1,5 +1,5 @@
 import { create } from 'apisauce';
 
 export default create({
-    baseURL : "http://orderservice:3001"
+    baseURL : "http://0.0.0.0:3001"
 });

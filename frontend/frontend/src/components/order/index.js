@@ -1,11 +1,11 @@
 import "./index.module.css";
 import { useRouter } from "next/router";
 
-export default function Order({_id, name, photo, description}){
+export default function Order({recipeId, name, photo, description}){
     const router = useRouter();
 
     function seeRecipe(){
-        router.push("/recipe/" + {_id});
+        router.push("/recipe/" + recipeId);
     }
 
     return <div className="row">
