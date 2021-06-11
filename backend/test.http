@@ -5,24 +5,10 @@ POST http://localhost:3001/recipe/60c30b7a5e7c266df8d1a0ec
 content-type: application/json
 
 {
-    "ingredients": [
-        {
-        "name": "Ingredient 1",
-        "checked": false
-        },
-        {
-        "name": "Ingredient 2",
-        "checked": true
-        }
-    ],
     "steps": [
         {
-        "name": "Step 1",
-        "checked": false
-        },
-        {
-        "name": "Step 2",
-        "checked": true
+            "name": "Step 2",
+            "checked": false
         }
     ]
 }

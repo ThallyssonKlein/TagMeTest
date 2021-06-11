@@ -62,7 +62,20 @@ app.get("/recipe/:id", (req, res) => {
 
 app.post("/recipe/:id", async (req, res) => {
     const id = req.params.id;
-    db.collection("recipes").updateOne({"_id" : new ObjectID(id)}, {$set : {...req.body}}, {upsert : false});
+    const body = req.body;
+    if(body["ingredients"]){
+        db.collection("recipes").updateOne({"_id" : new ObjectID(id), 
+                                            "ingredients.name" : body.ingredients[0].name}, 
+                                            {$set : {
+                                                "ingredients.$.checked" : body.ingredients[0].checked
+                                            }}, {upsert : false});
+    }else{
+        db.collection("recipes").updateOne({"_id" : new ObjectID(id), 
+                                            "steps.name" : body.steps[0].name}, 
+                                            {$set : {
+                                                "steps.$.checked" : body.steps[0].checked
+                                            }}, {upsert : false});
+    }
     res.send();
 });
 
