@@ -1,0 +1,14 @@
+GET http://localhost:3001/recipe/60c30b7a5e7c266df8d1a0ec
+
+###
+POST http://localhost:3001/recipe/60c30b7a5e7c266df8d1a0ec
+content-type: application/json
+
+{
+    "steps": [
+        {
+            "name": "Step 2",
+            "checked": false
+        }
+    ]
+}

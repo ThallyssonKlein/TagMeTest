@@ -1,11 +1,12 @@
 {
-  "name": "fuck",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "apisauce": "^2.1.1",
     "cookie-cutter": "^0.2.0",
     "cookies": "^0.8.0",
     "next": "^10.2.3",
@@ -35,5 +36,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
