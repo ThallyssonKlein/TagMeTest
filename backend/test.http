@@ -1,7 +1,9 @@
-GET http://localhost:3001/recipe/60c30b7a5e7c266df8d1a0ec
+GET http://localhost:3001/order
+###
+GET http://localhost:3001/recipe/60c3e80d8b6d430bed1b7892
 
 ###
-POST http://localhost:3001/recipe/60c30b7a5e7c266df8d1a0ec
+POST http://localhost:3001/recipe/60c3e80d8b6d430bed1b7892
 content-type: application/json
 
 {
