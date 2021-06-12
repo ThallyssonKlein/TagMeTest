@@ -4,7 +4,7 @@ export default function Logo(){
                 <style jsx>
                         {`
                             .imgContainer {
-                                border-radius : 50px;
+                                border-radius : 50%;
                                 border-color : white;
                                 display : flex;
                                 flex-direction : row;

@@ -22,6 +22,7 @@ export default function Recipe(){
     }, []);
 
     return <div>
+                <img src={"/" + selectedOrder.photo + "-grande.jpg"} alt={selectedOrder.photo}/>
                 <h1>{selectedOrder.name}</h1>
                 <p>{selectedOrder.description}</p>
                 {lists}            

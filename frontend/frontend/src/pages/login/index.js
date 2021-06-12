@@ -2,10 +2,11 @@ import { useState } from 'react';
 import cookieCutter from 'cookie-cutter';
 import { useRouter } from 'next/router';
 import GlobalStyles from '../../components/globalStyles';
-import FilledInput from '@material-ui/core/FilledInput';
 import Button from '@material-ui/core/Button';
+import FilledInput from '@material-ui/core/FilledInput';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Logo from '../../components/logo';
+import Head from 'next/head';
 
 export default function Login(){
     const router = useRouter();
@@ -20,6 +21,9 @@ export default function Login(){
     }
 
     return <GlobalStyles>
+                <Head>
+                    <title>Login</title>
+                </Head>
                 <div className="viewport bg-login" style={{backgroundImage : 'url(/img-bg-login.jpg)'}}>
                     <div className="col">
                         <Logo/>
@@ -46,7 +50,7 @@ export default function Login(){
                                     onClick={_ => doLogin(username, password)}
                                     style={{color : "white", flex : 1}}
                                     color="primary">
-                                <b>Primary</b>
+                                <b>Acessar</b>
                             </Button>
                         </div>
                     </div>

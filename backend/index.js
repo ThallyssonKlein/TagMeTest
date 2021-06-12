@@ -3,39 +3,24 @@ const cors = require('cors');
 const express = require('express');
 const port = 3001;
 const { MongoClient, ObjectID } = require('mongodb');
-const client = new MongoClient("mongodb://localhost:27017/tagme");
+const client = new MongoClient("mongodb://0.0.0.0:27017/tagme");
 var db;
+const orders = require('./pratos');
 
 async function setupDb(){
     await client.connect();
     db = client.db();
-    const result = await db.collection("recipes").insertOne({
-        ingredients : [
-            {
-                name : "Ingredient 1",
-                checked : true
-            },
-            {
-                name : "Ingredient 2",
-                checked : false
-            }
-        ],
-        steps : [
-            {
-                name : "Step 1",
-                checked : true
-            },
-            {
-                name : "Step 2",
-                checked : false
-            }
-        ]
-    });
-    db.collection("orders").insertOne({
-        name : "Order",
-        photo : "photo",
-        description : "description",
-        recipeId : result.insertedId
+    orders.forEach(async order => {
+        const result = await db.collection("recipes").insertOne({
+            ingredients : order.ingredients,
+            steps : order.steps
+        });
+        db.collection("orders").insertOne({
+            name : order.name,
+            description : order.description,
+            recipeId : result.insertedId,
+            photo : order.photo
+        });
     });
 }
 

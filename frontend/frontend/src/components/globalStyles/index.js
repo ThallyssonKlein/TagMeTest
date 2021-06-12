@@ -4,10 +4,11 @@ export default function GlobalStyles({ children }) {
             {children}
             <style jsx global>
                 {`
-                    * {
+                    body {
                         padding: 0;
                         margin: 0;
                         border: 0;
+                        font-family : arial;
                     }
                     .viewport {
                         height : 100vh;
@@ -20,11 +21,24 @@ export default function GlobalStyles({ children }) {
                     .row {
                         display : flex;
                         flex-direction : row;
+                        margin-top : 20px;
+                        margin-bottom : 30px;
+                        align-items : center;
                     }
 
                     .col {
                         display : flex;
                         flex-direction : column;
+                    }
+
+                    .header {
+                        display : flex;
+                        flex-direction : row;
+                        background-color : black;
+                    }
+
+                    hr {
+                        border-top: 0.1px solid gray;
                     }
                 `}
             </style>
