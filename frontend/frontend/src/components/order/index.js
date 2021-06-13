@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useContext } from 'react';
 import { ApplicationContext } from "../../context/ApplicationContext";
 
-export default function Order({recipeId, name, photo, description}){
+export default function Order({recipeId, name, photo, description, _id}){
     const router = useRouter();
     const { setSelectedOrder } = useContext(ApplicationContext);
 
@@ -11,9 +11,10 @@ export default function Order({recipeId, name, photo, description}){
         setSelectedOrder({
             name,
             description,
-            recipeId
+            recipeId,
+            photo
         });
-        router.push("/recipe/");
+        router.push("/recipe/" + _id);
     }
 
     return <div className="row" style={{justifyContent : "space-between", borderBottom : "0.1px solid gray", borderTop : "0.1px solid gray"}}>

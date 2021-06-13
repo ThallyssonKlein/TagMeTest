@@ -4,7 +4,7 @@ export default function GlobalStyles({ children }) {
             {children}
             <style jsx global>
                 {`
-                    body {
+                    * {
                         padding: 0;
                         margin: 0;
                         border: 0;
@@ -35,6 +35,7 @@ export default function GlobalStyles({ children }) {
                         display : flex;
                         flex-direction : row;
                         background-color : black;
+                        margin-bottom : 20px;
                     }
 
                     hr {

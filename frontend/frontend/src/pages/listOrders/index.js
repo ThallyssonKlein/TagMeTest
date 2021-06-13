@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { findAll } from '../../backend/orders';
 import Order from '../../components/order';
 import Header from '../../components/header';
-import GlobalStyles from '../../components/globalStyles';
 import Head from 'next/head';
 
 export default function App(){
@@ -17,13 +16,14 @@ export default function App(){
 					return <Order name={order.name}
 								  description={order.description}
 								  photo={order.photo}
-								  recipeId={order.recipeId}/>
+								  recipeId={order.recipeId}
+								  _id={order._id}/>
 				}));
 			}
 		})();
 	}, []);
 
-    return <GlobalStyles>
+    return <div>
 					<Head>
 						<title>Lista de pedidos</title>
 					</Head>
@@ -34,7 +34,7 @@ export default function App(){
 						</div>
 						{orders}
 					</div>
-			</GlobalStyles>
+			</div>
 }
 
 export async function getServerSideProps(ctx) {

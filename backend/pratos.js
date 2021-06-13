@@ -80,7 +80,7 @@ const array = [
     {
         name : "Massa espaguete à Italiana",
         description : "Espaguete italiano coberto com mexilhões, lula, polvo, camarões, salteados no azeite com alho, cebola, molho de tomates frescos e manjericão.",
-        photo : "prato-photo",
+        photo : "prato-massa",
         ingredients : [
             "200 gr Espaguete",
             "6 unidades de vieira",

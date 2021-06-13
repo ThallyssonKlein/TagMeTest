@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import cookieCutter from 'cookie-cutter';
 import { useRouter } from 'next/router';
-import GlobalStyles from '../../components/globalStyles';
 import Button from '@material-ui/core/Button';
 import FilledInput from '@material-ui/core/FilledInput';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -20,7 +19,7 @@ export default function Login(){
         }
     }
 
-    return <GlobalStyles>
+    return <div>
                 <Head>
                     <title>Login</title>
                 </Head>
@@ -55,5 +54,5 @@ export default function Login(){
                         </div>
                     </div>
                 </div>
-            </GlobalStyles>
+            </div>
 }
