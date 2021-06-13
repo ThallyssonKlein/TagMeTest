@@ -1,12 +1,15 @@
 import Cookies from 'cookies'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { findAll } from '../../backend/order';
 import Order from '../../components/order';
 import Header from '../../components/header';
 import Head from 'next/head';
 
+import { SearchContext } from '../../context/SearchContext';
+
 export default function App(){
 	const [orders, setOrders] = useState([]);
+	const { setSearchQuery } = useContext(SearchContext);
 
 	useEffect(_ => {
 		(async _ => {
@@ -23,12 +26,16 @@ export default function App(){
 		})();
 	}, []);
 
+	function search(query){
+		setSearchQuery(query);
+	}
+
     return <div>
 					<Head>
 						<title>Lista de pedidos</title>
 					</Head>
 					<div style={{marginLeft : 30, marginRight: 30}}>
-						<Header/>
+						<Header search={search}/>
 						<div className="hr">
 							<h2>Últimos pedidos</h2>
 						</div>
