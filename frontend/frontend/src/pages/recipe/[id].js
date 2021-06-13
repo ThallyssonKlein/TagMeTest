@@ -6,11 +6,30 @@ import { findOne as findOneOrder } from '../../backend/order';
 
 import { useRouter } from 'next/router';
 
+import Button from '@material-ui/core/Button';
+
+import { ChecksContext } from '../../context/ChecksContext';
+
 function Recipe({id}){
     const { selectedOrder } = useContext(ApplicationContext);
     const [internalSelectedOrder, setInternalSelectedOrder] = useState(selectedOrder);
     const [lists, setLists] = useState();
     const router = useRouter();
+    const { checkedIngredients, checkedSteps } = useContext(ChecksContext);
+    const [allChecked, setAllChecked] = useState(true);
+
+    useEffect(_ => {
+        Object.entries(checkedIngredients).forEach(ingredient => {
+            if(!ingredient[1]){
+                setAllChecked(false);
+            }
+        });
+        Object.entries(checkedSteps).forEach(step => {
+            if(!step[1]){
+                setAllChecked(false);
+            }
+        });
+    }, [checkedIngredients, checkedSteps]);
 
     useEffect(_ => {
         (async _ => {
@@ -55,7 +74,13 @@ function Recipe({id}){
                                 <p>{internalSelectedOrder.description}</p>
                             </div>
                         </div>
-                        {lists}            
+                        {lists} 
+                        {allChecked &&
+                            <Button variant="contained"
+                                    style={{color : "white"}}
+                                    color="primary">
+                                    <b>Acessar</b>
+                            </Button> }          
                     </div> : 
                     <div>Carregando a receita...</div>
                }
