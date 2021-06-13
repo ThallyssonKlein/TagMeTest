@@ -14,7 +14,7 @@ export default function Login(){
 
     function doLogin(username, password){    
         if(username === "test" && password === "test"){
-            cookieCutter.set("authenticated", "true");
+            cookieCutter.set("authenticated", true);
             router.push("/listOrders");
         }
     }

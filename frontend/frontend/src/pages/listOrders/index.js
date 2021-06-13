@@ -48,7 +48,7 @@ export async function getServerSideProps(ctx) {
 	const { req, res } = ctx;
 	const cookies = new Cookies(req, res);
 
-	if (!cookies.get("authenticated")) {
+	if (!cookies.get("authenticated") || cookies.get("authenticated") === "false") {
 		return {
 			redirect: { destination: '/login', permanent: true },
 		};

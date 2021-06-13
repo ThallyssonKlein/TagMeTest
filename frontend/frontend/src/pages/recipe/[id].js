@@ -10,6 +10,8 @@ import Button from '@material-ui/core/Button';
 
 import { ChecksContext } from '../../context/ChecksContext';
 
+import Cookies from 'cookies';
+
 function Recipe({id}){
     const { selectedOrder } = useContext(ApplicationContext);
     const [internalSelectedOrder, setInternalSelectedOrder] = useState(selectedOrder);
@@ -38,6 +40,7 @@ function Recipe({id}){
             let orderId = id;
             if(!selectedOrder){
                 findOneOrderResponse = await findOneOrder(orderId);
+                findOneOrderResponse = findOneOrderResponse.data;
                 findOneResponse = await findOneRecipe(findOneOrderResponse.recipeId);
                 setInternalSelectedOrder(findOneOrderResponse);
             }else{
@@ -87,8 +90,22 @@ function Recipe({id}){
             </div>
 }
 
-export const getServerSideProps = async ({params}) => {
+export const getServerSideProps = async ctx => {
+    const { params } = ctx;
     const id = params.id;
+    const { req, res } = ctx;
+	const cookies = new Cookies(req, res);
+    const findOneOrderResponse = await findOneOrder(id);
+    if(!findOneOrderResponse.ok){
+        return {
+			redirect: { destination: '/listOrders', permanent: true },
+		};
+    }
+    if (!cookies.get("authenticated") || cookies.get("authenticated") === "false") {
+		return {
+			redirect: { destination: '/login', permanent: true },
+		};
+	}
     return {
        props: { id }
     }

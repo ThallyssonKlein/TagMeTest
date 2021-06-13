@@ -35,6 +35,7 @@ export default function GlobalStyles({ children }) {
                         flex-direction : row;
                         background-color : black;
                         margin-bottom : 20px;
+                        justify-content : space-between;
                     }
 
                     hr {

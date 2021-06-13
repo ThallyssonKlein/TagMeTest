@@ -7,5 +7,5 @@ export async function findAll(){
 
 export async function findOne(orderId){
     const apiResponse = await API.get("/order/" + orderId);
-    return apiResponse.data;
+    return apiResponse;
 }
