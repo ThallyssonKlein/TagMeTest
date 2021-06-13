@@ -17,8 +17,8 @@ export default function Order({recipeId, name, photo, description, _id}){
         router.push("/recipe/" + _id);
     }
 
-    return <div className="row" style={{justifyContent : "space-between", borderBottom : "0.1px solid gray", borderTop : "0.1px solid gray"}}>
-                <div className="row">
+    return <div className="row" style={{marginTop : 20, marginBottom : 30,justifyContent : "space-between", borderBottom : "0.1px solid gray", borderTop : "0.1px solid gray"}}>
+                <div className="row" style={{marginTop : 20, marginBottom : 30}}>
                     <div className="col" style={{marginRight : 10}}>
                         <img src={"/" + photo + "-peq.jpg"} alt={photo} width="135px" height="135px"/>
                     </div>

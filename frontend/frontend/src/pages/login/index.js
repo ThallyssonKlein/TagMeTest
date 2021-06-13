@@ -44,7 +44,7 @@ export default function Login(){
                                          style={{backgroundColor : "white"}}
                                          onChange={e => setPassword(e.target.value)}/>
                         </div>
-                        <div className="row" style={{marginTop : 10}}>
+                        <div className="row" style={{marginTop : 10, marginBottom : 30}}>
                             <Button variant="contained"
                                     onClick={_ => doLogin(username, password)}
                                     style={{color : "white", flex : 1}}

@@ -21,8 +21,7 @@ export default function GlobalStyles({ children }) {
                     .row {
                         display : flex;
                         flex-direction : row;
-                        margin-top : 20px;
-                        margin-bottom : 30px;
+                        
                         align-items : center;
                     }
 

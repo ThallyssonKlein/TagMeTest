@@ -1,6 +1,6 @@
 import Cookies from 'cookies'
 import { useEffect, useState } from 'react';
-import { findAll } from '../../backend/orders';
+import { findAll } from '../../backend/order';
 import Order from '../../components/order';
 import Header from '../../components/header';
 import Head from 'next/head';
