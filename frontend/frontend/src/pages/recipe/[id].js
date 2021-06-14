@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { ApplicationContext } from '../../context/ApplicationContext';
 import CheckBoxContainer from '../../components/checkboxContainer';
 import { findOne as findOneRecipe } from '../../backend/recipe';
-import { findOne as findOneOrder } from '../../backend/order';
+import { findOne as findOneOrder, updateOne as updateOneOrder } from '../../backend/order';
 
 import { useRouter } from 'next/router';
 
@@ -67,17 +67,16 @@ function Recipe({id}){
         router.push("/listOrders");
     }
 
-    function finalize(){
-        setFinalized(true);
+    async function finalize(){
+        setFinalized(false);
+        back();
+        updateOneOrder(id, {finalized: true});
     }
 
     return <div className="viewport">
             <Modal isOpen={finalized}
                     contentLabel="Pedido finalizado com sucesso">
-                    <button onClick={_ => {
-                                        setFinalized(false);
-                                        back();
-                                    }}>
+                    <button onClick={finalize}>
                         Fechar
                     </button>
             </Modal>
@@ -98,7 +97,7 @@ function Recipe({id}){
                             <Button variant="contained"
                                     style={{color : "white"}}
                                     color="primary"
-                                    onClick={finalize}>
+                                    onClick={_ => setFinalized(true)}>
                                     <b>Finalizar Pedido</b>
                             </Button> }          
                     </div> : 

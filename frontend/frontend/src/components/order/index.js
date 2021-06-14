@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { ApplicationContext } from "../../context/ApplicationContext";
 import { SearchContext } from '../../context/SearchContext';
 
-export default function Order({recipeId, name, photo, description, _id}){
+export default function Order({recipeId, name, photo, description, _id, finalized, when}){
     const router = useRouter();
     const { setSelectedOrder } = useContext(ApplicationContext);
     const { searchQuery } = useContext(SearchContext);
@@ -30,7 +30,11 @@ export default function Order({recipeId, name, photo, description, _id}){
                         <p>{description}</p>
                     </div>
                 </div>
-                <div className="col" style={{marginLeft : 10}}>
+                <div className="row" style={{marginLeft : 10}}>
+                    {finalized && <span style={{color : "green"}}>Prato finalizado</span>}
+                    <div className="when">
+                        {when}
+                    </div>
                     <div className="seeRecipeButton"
                          onClick={seeRecipe}>
                                 <b>Ver receita</b>
@@ -38,6 +42,19 @@ export default function Order({recipeId, name, photo, description, _id}){
                 </div>
                 <style jsx>
                     {`
+                        .when {
+                            border-radius : 50%;
+                            background-color : gray;
+                            width : 100px;
+                            height : 100px;
+                            display : flex;
+                            flex-direction : row;
+                            justify-content : center;
+                            align-items : center;
+                            color : white;
+                            cursor : pointer;
+                            margin-right : 10px;
+                        }
                         .seeRecipeButton {
                             border-radius : 50%;
                             background-color : #ff9800;

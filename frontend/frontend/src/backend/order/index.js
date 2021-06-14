@@ -9,3 +9,8 @@ export async function findOne(orderId){
     const apiResponse = await API.get("/order/" + orderId);
     return apiResponse;
 }
+
+export async function updateOne(orderId, body){
+    const apiResponse = await API.post("/order/" + orderId, body);
+    return apiResponse.data;
+}

@@ -33,21 +33,19 @@ export default function CheckBoxContainer({listName, list, recipeId}){
     });
 
     useEffect(_ => {
-        setTimeout(_ => {
-            if(listName === "ingredients"){
-                let tmpCheckedIngredients = {};
-                list.forEach(item => {
-                    tmpCheckedIngredients[item.name] = item.checked;
-                });
-                setCheckedIngredients(tmpCheckedIngredients);
-            }else{
-                let tmpCheckedSteps = {};
-                list.forEach(item => {
-                    tmpCheckedSteps[item.name] = item.checked;
-                });
-                setCheckedSteps(tmpCheckedSteps);
-            }
-        }, 1000);
+        if(listName === "ingredients"){
+            let tmpCheckedIngredients = {};
+            list.forEach(item => {
+                tmpCheckedIngredients[item.name] = item.checked;
+            });
+            setCheckedIngredients(tmpCheckedIngredients);
+        }else{
+            let tmpCheckedSteps = {};
+            list.forEach(item => {
+                tmpCheckedSteps[item.name] = item.checked;
+            });
+            setCheckedSteps(tmpCheckedSteps);
+        }
     }, []);
 
     return <div className={liClasses} style={{padding : 20, alignItems : "flex-start"}}>

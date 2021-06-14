@@ -20,7 +20,9 @@ export default function App(){
 								  description={order.description}
 								  photo={order.photo}
 								  recipeId={order.recipeId}
-								  _id={order._id}/>
+								  _id={order._id}
+								  finalized={order.finalized}
+								  when={order.when}/>
 				}));
 			}
 		})();
