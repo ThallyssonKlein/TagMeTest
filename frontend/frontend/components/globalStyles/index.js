@@ -45,6 +45,10 @@ export default function GlobalStyles({ children }) {
                     hr {
                         border-top: 0.1px solid gray;
                     }
+
+                    .topImg {
+                        height : 589px;
+                    }
                 `}
             </style>
         </>

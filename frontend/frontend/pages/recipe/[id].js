@@ -12,7 +12,11 @@ import { ChecksContext } from '../../context/ChecksContext';
 
 import Cookies from 'cookies';
 
-import Modal from 'react-modal';
+import Modal from '@material-ui/core/Modal';
+
+import { useMediaQuery } from 'react-responsive';
+
+import classNames from 'classnames';
 
 function Recipe({id}){
     const [finalized, setFinalized] = useState(false);
@@ -22,6 +26,7 @@ function Recipe({id}){
     const router = useRouter();
     const { checkedIngredients, checkedSteps } = useContext(ChecksContext);
     const [allChecked, setAllChecked] = useState(true);
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
 
     useEffect(_ => {
         Object.entries(checkedIngredients).forEach(ingredient => {
@@ -73,20 +78,49 @@ function Recipe({id}){
         updateOneOrder(id, {finalized: true});
     }
 
+    let liClasses = classNames({
+        'col': true,
+        'topImg': isTabletOrMobile,
+    });
+      
+    function getModalStyle() {
+        const top = 50;
+        const left = 50;
+        
+        return {
+            top: `${top}%`,
+            left: `${left}%`,
+            transform: `translate(-${top}%, -${left}%)`,
+        };
+    }
+
     return <div className="viewportWithoutAligment">
-            <Modal isOpen={finalized}
-                    contentLabel="Pedido finalizado com sucesso">
-                    <button onClick={finalize}>
-                        Fechar
-                    </button>
+            <Modal open={finalized}
+                   onClose={finalize}>
+                    <div style={{
+                        position: 'absolute',
+                        width: 400,
+                        backgroundColor: "white",
+                        border: '2px solid #000',
+                        padding : 50,
+                        textAlign : "center",
+                        ...getModalStyle(),
+                    }}>
+                        <div style={{marginBottom : 10}}>Pedido finalizado com sucesso</div>
+                        <Button variant="contained"
+                                style={{color : "white"}}
+                                color="primary"
+                                onClick={finalize}>
+                                <b>Entendi</b>
+                        </Button>
+                    </div>
             </Modal>
                {
                    (lists) ? 
                         <>
-                            <div className="col"
+                            <div className={liClasses}
                                  style={{
                                                 padding : 30,
-                                                height : 589,
                                                 justifyContent : "space-between",
                                                 backgroundSize : "cover",
                                                 color : "white",
@@ -123,7 +157,7 @@ export const getServerSideProps = async ctx => {
     const id = params.id;
     const { req, res } = ctx;
 	const cookies = new Cookies(req, res);
-    const findOneOrderResponse = await findOneServerSide(id);
+    const findOneOrderResponse = await findOneOrder(id);
     if(!findOneOrderResponse.ok){
         return {
 			redirect: { destination: '/listOrders', permanent: true },
