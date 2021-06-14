@@ -68,6 +68,6 @@ export const getServerSideProps = async ctx => {
 		};
 	}
     return {
-       props: { id }
+       props: {}
     }
 }

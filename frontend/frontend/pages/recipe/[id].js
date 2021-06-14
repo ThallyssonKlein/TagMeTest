@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { ApplicationContext } from '../../context/ApplicationContext';
 import CheckBoxContainer from '../../components/checkboxContainer';
 import { findOne as findOneRecipe } from '../../backend/recipe';
-import { findOne as findOneOrder, updateOne as updateOneOrder } from '../../backend/order';
+import { findOne as findOneOrder, updateOne as updateOneOrder, findOneServerSide } from '../../backend/order';
 
 import { useRouter } from 'next/router';
 
@@ -123,7 +123,7 @@ export const getServerSideProps = async ctx => {
     const id = params.id;
     const { req, res } = ctx;
 	const cookies = new Cookies(req, res);
-    const findOneOrderResponse = await findOneOrder(id);
+    const findOneOrderResponse = await findOneServerSide(id);
     if(!findOneOrderResponse.ok){
         return {
 			redirect: { destination: '/listOrders', permanent: true },
