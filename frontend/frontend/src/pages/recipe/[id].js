@@ -12,7 +12,10 @@ import { ChecksContext } from '../../context/ChecksContext';
 
 import Cookies from 'cookies';
 
+import Modal from 'react-modal';
+
 function Recipe({id}){
+    const [finalized, setFinalized] = useState(false);
     const { selectedOrder } = useContext(ApplicationContext);
     const [internalSelectedOrder, setInternalSelectedOrder] = useState(selectedOrder);
     const [lists, setLists] = useState();
@@ -64,7 +67,20 @@ function Recipe({id}){
         router.push("/listOrders");
     }
 
+    function finalize(){
+        setFinalized(true);
+    }
+
     return <div className="viewport">
+            <Modal isOpen={finalized}
+                    contentLabel="Pedido finalizado com sucesso">
+                    <button onClick={_ => {
+                                        setFinalized(false);
+                                        back();
+                                    }}>
+                        Fechar
+                    </button>
+            </Modal>
                {
                    (lists) ? 
                     <div className="col" style={{flex : 1}}>
@@ -81,8 +97,9 @@ function Recipe({id}){
                         {allChecked &&
                             <Button variant="contained"
                                     style={{color : "white"}}
-                                    color="primary">
-                                    <b>Acessar</b>
+                                    color="primary"
+                                    onClick={finalize}>
+                                    <b>Finalizar Pedido</b>
                             </Button> }          
                     </div> : 
                     <div>Carregando a receita...</div>
