@@ -3,7 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const port = 3001;
 const { MongoClient, ObjectID } = require('mongodb');
-const client = new MongoClient("mongodb://mongo:27017/tagme");
+const client = new MongoClient("mongodb://localhost:27017/tagme");
 var db;
 const orders = require('./pratos');
 
