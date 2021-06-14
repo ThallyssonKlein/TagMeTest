@@ -19,6 +19,7 @@ export default function CheckBoxContainer({listName, list, recipeId}){
         if(listName === "ingredients"){
             let tmpCheckedIngredients = checkedIngredients;
             tmpCheckedIngredients[item.name] = change;
+            console.log(tmpCheckedIngredients);
             setCheckedIngredients(tmpCheckedIngredients);
         }else{
             let tmpCheckedSteps = checkedSteps;

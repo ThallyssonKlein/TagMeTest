@@ -8,4 +8,4 @@ RUN cd frontend/ && yarn
 
 EXPOSE 3000
 
-CMD cd frontend/ && yarn dev
+CMD cd frontend/ && yarn build && yarn start

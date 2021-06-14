@@ -12,7 +12,7 @@ services:
     networks:
       - frontend_net
     ports:
-        - 27017:27017
+      - 27017:27017
   frontend:
     container_name: frontend
     hostname: frontend
@@ -22,14 +22,9 @@ services:
     ports:
       - 3000:3000
     links:
-      - orderservice
+      - backend
     depends_on:
-      - orderservice
-    # environment:
-    #   - WAIT_HOSTS=mysql_db2:3306
-    #   - WAIT_HOSTS_TIMEOUT=300
-    #   - WAIT_SLEEP_INTERVAL=30
-    #   - WAIT_HOST_CONNECT_TIMEOUT=30
+      - backend
   backend:
     container_name: backend
     hostname: backend
@@ -42,21 +37,3 @@ services:
       - mongo
     depends_on:
       - mongo
-    # environment:
-    #   - WAIT_HOSTS=mysql_db2:3306
-    #   - WAIT_HOSTS_TIMEOUT=300
-    #   - WAIT_SLEEP_INTERVAL=30
-    #   - WAIT_HOST_CONNECT_TIMEOUT=30
-#   gateway:
-#     container_name: gateway
-#     build: ./gateway
-#     networks:
-#       - frontend_net
-#     links:
-#       - userclientservice
-#       - useroperatorservice
-#     ports:
-#       - 8080:8080
-#     depends_on:
-#       - useroperatorservice
-#       - userclientservice
