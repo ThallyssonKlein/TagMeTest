@@ -52,10 +52,19 @@ export default function CheckBoxContainer({listName, list, recipeId}){
     return <div className={liClasses} style={{padding : 30, alignItems : "flex-start"}}>
                 <h2 style={{marginBottom : 20}}>{listName === "ingredients" ? "Ingredientes" : "Modo de preparo"}</h2>
                 {
-                    list.map(item => {
-                        return <CheckBox checked={item.checked}
-                                         item={item}
-                                         onChange={onChange}/>
+                    list.map((item, index) => {
+                        if(listName === "steps"){
+                            return <div className="col" style={{marginBottom : 10}}>
+                                    <b style={{marginBottom : 5}}>Passo {index + 1}</b>
+                                    <CheckBox checked={item.checked}
+                                              item={item}
+                                              onChange={onChange}/>
+                               </div>
+                        }else{
+                            return <CheckBox checked={item.checked}
+                                             item={item}
+                                             onChange={onChange}/>
+                        }
                     })
                 }
                 <style jsx>
