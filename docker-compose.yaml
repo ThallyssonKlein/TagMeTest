@@ -1,0 +1,44 @@
+version: "3"
+
+networks:
+  frontend_net:
+    driver: bridge
+
+services:
+  mongo:
+    image: mongo
+    hostname: mongo
+    restart: on-failure
+    networks:
+      - frontend_net
+    ports:
+      - 27017:27017
+  frontend:
+    container_name: frontend
+    hostname: frontend
+    build: ./frontend
+    networks:
+      - frontend_net
+    ports:
+      - 3000:3000
+    links:
+      - backend
+    depends_on:
+      - backend
+  backend:
+    container_name: backend
+    hostname: backend
+    build: ./backend
+    networks:
+      - frontend_net
+    ports:
+      - 3001:3001
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    environment:
+      - WAIT_HOSTS=mongo:27017
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_HOST_CONNECT_TIMEOUT=30
