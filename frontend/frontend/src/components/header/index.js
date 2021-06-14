@@ -8,17 +8,15 @@ export default function Header({search}){
 
     return <header>
                 <div className="header">
-                        <div style={{margin : 10}}>
-                            <img src="logo-coco-bambu-mini.png" alt="logo-coco-bambu-mini" style={{marginRight : 10}}/>
-                            <FilledInput startAdornment={
-                                                    <InputAdornment position="end">
-                                                        <img src="/icon-busca.png" alt="icon-busca.png"/>
-                                                    </InputAdornment>
-                                                }
-                                        placeholder="Buscar receita..."
-                                        style={{backgroundColor : "white"}}
-                                        onChange={e => search(e.target.value)}/>
-                        </div>
+                        <img src="logo-coco-bambu-mini.png" alt="logo-coco-bambu-mini" style={{margin : 10, height : 33}}/>
+                        <FilledInput endAdornment={
+                                                        <InputAdornment position="end">
+                                                            <img src="/icon-busca.png" alt="icon-busca.png"/>
+                                                        </InputAdornment>
+                                                    }
+                                     placeholder="Buscar receita..."
+                                     style={{backgroundColor : "white", flexGrow : 1, margin : 10}}
+                                     onChange={e => search(e.target.value)}/>
                         <div className="col"
                              onClick={_ => {
                                 cookieCutter.set("authenticated", false);

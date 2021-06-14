@@ -36,6 +36,7 @@ export default function GlobalStyles({ children }) {
                         background-color : black;
                         margin-bottom : 20px;
                         justify-content : space-between;
+                        align-items : center;
                     }
 
                     hr {

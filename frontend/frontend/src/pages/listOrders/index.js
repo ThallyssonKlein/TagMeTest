@@ -36,12 +36,14 @@ export default function App(){
 					<Head>
 						<title>Lista de pedidos</title>
 					</Head>
-					<div style={{marginLeft : 30, marginRight: 30}}>
+					<div>
 						<Header search={search}/>
-						<div className="hr">
-							<h2>Últimos pedidos</h2>
+						<div style={{marginLeft : 30, marginRight: 30}}>
+							<div className="hr">
+								<h2>Últimos pedidos</h2>
+							</div>
+							{orders}
 						</div>
-						{orders}
 					</div>
 			</div>
 }

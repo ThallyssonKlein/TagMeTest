@@ -44,14 +44,14 @@ export default function Order({recipeId, name, photo, description, _id, finalize
                     {`
                         .when {
                             border-radius : 50%;
-                            background-color : gray;
+                            background-color : rgba(0,0,0,0.1);
                             width : 100px;
                             height : 100px;
                             display : flex;
                             flex-direction : row;
                             justify-content : center;
                             align-items : center;
-                            color : white;
+                            color : black;
                             cursor : pointer;
                             margin-right : 10px;
                         }
