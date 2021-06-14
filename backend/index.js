@@ -3,7 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const port = 3001;
 const { MongoClient, ObjectID } = require('mongodb');
-const client = new MongoClient("mongodb://0.0.0.0:27017/tagme");
+const client = new MongoClient("mongodb://mongo:27017/tagme");
 var db;
 const orders = require('./pratos');
 
@@ -19,7 +19,8 @@ async function setupDb(){
             name : order.name,
             description : order.description,
             recipeId : result.insertedId,
-            photo : order.photo
+            photo : order.photo,
+            when : order.when
         });
     });
 }
@@ -30,6 +31,15 @@ const app = express();
 app.use(bparser.urlencoded({extended: true}));
 app.use(bparser.json());
 app.use(cors());
+
+app.post("/order/:id", (req, res) => {
+    const id = req.params.id;
+    const body = req.body;
+    db.collection("orders").updateOne({"_id" : new ObjectID(id)}, 
+                                      {$set : body},
+                                      {upsert : false});
+    res.send();
+});
 
 app.get("/order", (req, res) => {
     db.collection("orders").find({}).toArray((err, documents) => {

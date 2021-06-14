@@ -28,7 +28,9 @@ export default function CheckBox({checked, onChange, item}){
                             border : 1px solid black;
                             cursor : pointer;
                             background-color : white;
-                            margin : 10px;
+                            margin-right : 10px;
+                            margin-bottom : 5px;
+                            margin-top : 5px;
                             width : 20px;
                             height : 20px;
                             display : flex;

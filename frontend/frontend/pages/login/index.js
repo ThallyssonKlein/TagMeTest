@@ -6,15 +6,16 @@ import FilledInput from '@material-ui/core/FilledInput';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Logo from '../../components/logo';
 import Head from 'next/head';
+import Cookies from 'cookies';
 
-export default function Login(){
+export default function Login() {
     const router = useRouter();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     function doLogin(username, password){    
         if(username === "test" && password === "test"){
-            cookieCutter.set("authenticated", "true");
+            cookieCutter.set("authenticated", true);
             router.push("/listOrders");
         }
     }
@@ -55,4 +56,18 @@ export default function Login(){
                     </div>
                 </div>
             </div>
+}
+
+export const getServerSideProps = async ctx => {
+    const { req, res } = ctx;
+	const cookies = new Cookies(req, res);
+
+    if (cookies.get("authenticated") || cookies.get("authenticated") === "true") {
+		return {
+			redirect: { destination: '/listOrders', permanent: true },
+		};
+	}
+    return {
+       props: {}
+    }
 }

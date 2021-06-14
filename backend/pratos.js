@@ -3,6 +3,7 @@ const array = [
         name : "Arroz de Mariscos para 2 pessoas",
         description : "Arroz com camarão, lula, peixe, lagosta, e mexilhão, refogado com pimentões e cebola juliene, temperos e um leve toque de açafrão. Servidos na paellera. Rico em sabor e apresentação.",
         photo : "prato-arroz-marisco",
+        when : "19:32",
         ingredients : [
             {
                 name : "1 cebola",
@@ -73,6 +74,7 @@ const array = [
         name : "Moqueca Tropical",
         description : "Escolha entre Camarão ou Peixe ou a combinação dos dois | De origem indígena. A moqueca é um cozido de peixe ou camarão ou com mistura de peixe e camarão com tomate, cebola, pimentões e cheiro-verde refogados. Leve toque de azeite de dendê e leite de coco natural. Na versão tropical, acrescentamos manga e abacaxi. Acompanha arroz branco, pirão de camarão e farofa de dendê",
         photo : "prato-moqueca",
+        when : "19:08",
         ingredients : [
             {
                 name : "2 kg de robalo cortado em postas com couro",
@@ -154,6 +156,7 @@ const array = [
         name : "Frutos do Mar ao Azeite de Ervas",
         description : "Para apreciadores de frutos do mar, com leve aroma de azeite de ervas finas. Mexilhões, polvo, peixe, camarão e lula salteados com azeite, champignon, cebola picada,pimentão, alho, alcaparras e brócolis. Servidos com arroz de brócolis e legumes salteados",
         photo : "prato-fruto",
+        when : "18:55",
         ingredients : [
             {
                 name : "250 gr fettuccine",
@@ -231,6 +234,7 @@ const array = [
         name : "Massa espaguete à Italiana",
         description : "Espaguete italiano coberto com mexilhões, lula, polvo, camarões, salteados no azeite com alho, cebola, molho de tomates frescos e manjericão.",
         photo : "prato-massa",
+        when : "18:47",
         ingredients : [
             {
                 name : "200 gr Espaguete",
@@ -296,6 +300,7 @@ const array = [
         name : "Bobó de Lagosta",
         description : "De origem indígena com toques cearenses. Esta moqueca de lagosta é feita com verduras refogadas acrescidas de leite de coco, azeite de dendê e coentro. Acompanha arroz branco, pirão de camarão e farofa de dendê",
         photo : "prato-bobo",
+        when : "18:33",
         ingredients : [
             {
                 name : "1 kg de camarão fresco",

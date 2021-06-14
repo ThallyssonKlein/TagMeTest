@@ -18,6 +18,9 @@ export default function GlobalStyles({ children }) {
                         justify-content : center;
                         align-items: center;
                     }
+                    .viewportWithoutAligment {
+                        height : 100vh;
+                    }
                     .row {
                         display : flex;
                         flex-direction : row;
@@ -35,6 +38,8 @@ export default function GlobalStyles({ children }) {
                         flex-direction : row;
                         background-color : black;
                         margin-bottom : 20px;
+                        justify-content : space-between;
+                        align-items : center;
                     }
 
                     hr {

@@ -1,12 +1,15 @@
-import Cookies from 'cookies'
-import { useEffect, useState } from 'react';
+import Cookies from 'cookies';
+import { useEffect, useState, useContext } from 'react';
 import { findAll } from '../../backend/order';
 import Order from '../../components/order';
 import Header from '../../components/header';
 import Head from 'next/head';
 
+import { SearchContext } from '../../context/SearchContext';
+
 export default function App(){
 	const [orders, setOrders] = useState([]);
+	const { setSearchQuery } = useContext(SearchContext);
 
 	useEffect(_ => {
 		(async _ => {
@@ -17,22 +20,30 @@ export default function App(){
 								  description={order.description}
 								  photo={order.photo}
 								  recipeId={order.recipeId}
-								  _id={order._id}/>
+								  _id={order._id}
+								  finalized={order.finalized}
+								  when={order.when}/>
 				}));
 			}
 		})();
 	}, []);
 
+	function search(query){
+		setSearchQuery(query);
+	}
+
     return <div>
 					<Head>
 						<title>Lista de pedidos</title>
 					</Head>
-					<div style={{marginLeft : 30, marginRight: 30}}>
-						<Header/>
-						<div className="hr">
-							<h2>Últimos pedidos</h2>
+					<div>
+						<Header search={search}/>
+						<div style={{marginLeft : 30, marginRight: 30}}>
+							<div className="hr">
+								<h2>Últimos pedidos</h2>
+							</div>
+							{orders}
 						</div>
-						{orders}
 					</div>
 			</div>
 }
@@ -41,7 +52,7 @@ export async function getServerSideProps(ctx) {
 	const { req, res } = ctx;
 	const cookies = new Cookies(req, res);
 
-	if (!cookies.get("authenticated")) {
+	if (!cookies.get("authenticated") || cookies.get("authenticated") === "false") {
 		return {
 			redirect: { destination: '/login', permanent: true },
 		};
