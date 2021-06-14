@@ -157,7 +157,7 @@ export const getServerSideProps = async ctx => {
     const id = params.id;
     const { req, res } = ctx;
 	const cookies = new Cookies(req, res);
-    const findOneOrderResponse = await findOneOrder(id);
+    const findOneOrderResponse = await findOrderServerSide(id);
     if(!findOneOrderResponse.ok){
         return {
 			redirect: { destination: '/listOrders', permanent: true },
