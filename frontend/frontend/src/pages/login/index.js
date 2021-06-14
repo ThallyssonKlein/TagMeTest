@@ -7,7 +7,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Logo from '../../components/logo';
 import Head from 'next/head';
 
-export default function Login(){
+export default function Login() {
     const router = useRouter();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
