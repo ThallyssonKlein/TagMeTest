@@ -73,7 +73,7 @@ function Recipe({id}){
         updateOneOrder(id, {finalized: true});
     }
 
-    return <div className="viewport">
+    return <div className="viewportWithoutAligment">
             <Modal isOpen={finalized}
                     contentLabel="Pedido finalizado com sucesso">
                     <button onClick={finalize}>
@@ -82,25 +82,37 @@ function Recipe({id}){
             </Modal>
                {
                    (lists) ? 
-                    <div className="col" style={{flex : 1}}>
-                        <div className="col" style={{height : 800, padding : 10, justifyContent : "space-between", color : "white", backgroundImage : "url(" + "/" + internalSelectedOrder.photo + "-grande.jpg)"}}>
-                            <div className="row" onClick={back} style={{cursor : "pointer", marginTop : 20, marginBottom : 30}}>
-                                <img src="/icon-back.png" alt="icon-back" style={{marginRight : 5}}/> Voltar
+                        <>
+                            <div className="col"
+                                 style={{
+                                                padding : 30,
+                                                height : 589,
+                                                justifyContent : "space-between",
+                                                backgroundSize : "cover",
+                                                color : "white",
+                                                backgroundImage : "url(" + "/" + internalSelectedOrder.photo + "-grande.jpg)"
+                                            }}>
+                                    <div className="row" 
+                                         onClick={back}
+                                         style={{marginTop : 20, marginBottom : 30, cursor : "pointer"}}>
+                                        <img src="/icon-back.png" alt="icon-back" /> Voltar
+                                    </div>
+                                    <div>
+                                        <h1 style={{marginBottom : 10}}>{internalSelectedOrder.name}</h1>
+                                        <p>{internalSelectedOrder.description}</p>
+                                    </div>
                             </div>
-                            <div>
-                                <h1 style={{marginBotton : 5}}>{internalSelectedOrder.name}</h1>
-                                <p>{internalSelectedOrder.description}</p>
+                            {lists} 
+                            <div style={{display : "flex", justifyContent : "flex-end", backgroundColor : "rgba(0,0,0,0.1)", padding : 10}}>
+                                <Button variant="contained"
+                                        style={{color : "white"}}
+                                        color="primary"
+                                        onClick={_ => setFinalized(true)}>
+                                        <b>Finalizar Pedido</b>
+                                </Button>
                             </div>
-                        </div>
-                        {lists} 
-                        {allChecked &&
-                            <Button variant="contained"
-                                    style={{color : "white"}}
-                                    color="primary"
-                                    onClick={_ => setFinalized(true)}>
-                                    <b>Finalizar Pedido</b>
-                            </Button> }          
-                    </div> : 
+                        </>
+                     : 
                     <div>Carregando a receita...</div>
                }
             </div>

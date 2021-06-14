@@ -49,8 +49,8 @@ export default function CheckBoxContainer({listName, list, recipeId}){
         }
     }, []);
 
-    return <div className={liClasses} style={{padding : 20, alignItems : "flex-start"}}>
-                <h2 style={{marginBottom : 10}}>{listName === "ingredients" ? "Ingredientes" : "Modo de preparo"}</h2>
+    return <div className={liClasses} style={{padding : 30, alignItems : "flex-start"}}>
+                <h2 style={{marginBottom : 20}}>{listName === "ingredients" ? "Ingredientes" : "Modo de preparo"}</h2>
                 {
                     list.map(item => {
                         return <CheckBox checked={item.checked}
@@ -61,7 +61,7 @@ export default function CheckBoxContainer({listName, list, recipeId}){
                 <style jsx>
                     {`
                         .gray-background {
-                            background-color : rgba(0,0,0,0.5);
+                            background-color : rgba(0,0,0,0.1);
                         }
                     `}
                 </style>     
