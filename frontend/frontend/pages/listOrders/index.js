@@ -1,4 +1,4 @@
-import Cookies from 'cookies'
+import Cookies from 'cookies';
 import { useEffect, useState, useContext } from 'react';
 import { findAll } from '../../backend/order';
 import Order from '../../components/order';

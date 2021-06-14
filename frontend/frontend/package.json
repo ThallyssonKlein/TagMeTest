@@ -4,22 +4,16 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "apisauce": "^2.1.1",
     "cookie-cutter": "^0.2.0",
     "cookies": "^0.8.0",
     "next": "^10.2.3",
-    "next-page-tester": "^0.26.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-modal": "^3.14.2",
-    "react-scripts": "4.0.3"
+    "react-modal": "^3.14.2"
   },
   "scripts": {
     "dev": "next dev",
-    "test": "react-scripts test",
     "build" : "next build",
     "start" : "next start"
   },
@@ -41,7 +35,6 @@
       "last 1 safari version"
     ]
   },
-  "main": "index.js",
   "devDependencies": {
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -51,7 +44,6 @@
     "eslint-plugin-react-hooks": "^4.2.0"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "author": "Thallysson Klein",
+  "license": "MIT"
 }
