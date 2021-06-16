@@ -12,6 +12,5 @@ EXPOSE 3001
 # ADD https://github.com/ufoscout/docker-compose-wait/releases/download/$WAIT_VERSION/wait /wait
 # RUN chmod +x /wait
 
-# CMD sh -c "/wait && yarn start"
-
-CMD yarn start
+CMD sh -c "/wait && cd backend && yarn start"
+# CMD yarn start

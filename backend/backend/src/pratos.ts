@@ -1,4 +1,4 @@
-const array = [
+export default [
     {
         name : "Arroz de Mariscos para 2 pessoas",
         description : "Arroz com camarão, lula, peixe, lagosta, e mexilhão, refogado com pimentões e cebola juliene, temperos e um leve toque de açafrão. Servidos na paellera. Rico em sabor e apresentação.",
@@ -382,5 +382,3 @@ const array = [
         ]
     }
 ]
-
-module.exports = array;
